@@ -247,13 +247,6 @@ aoristic.df <- function
     if (errors.rogue > 0) {
       message(paste("  ", errors.rogue, " row(s) had miscellaneous errors that this package repaired.", "\n", sep = ""))
     }
-    if (errors.missing > 0 || errors.logic > 0){
-      txt <- paste("  Use 'aoristic.datacheck()' to identify these rows.", "\n", sep = "")
-      txt <- paste(txt, "  '?aoristic.datacheck' explains how aoristic.df handles these data.", "\n", sep = "")
-    }
-    txt <- paste(txt, "  Any warnings appearing below indicate miscellaneous data errors that could not", "\n", sep = "")
-    txt <- paste(txt, "  diagnosed and corrected by the aoristic package. They have not be used in the analysis.","\n", sep = "")
-    message(txt)
   }  
   
   return(df1)
