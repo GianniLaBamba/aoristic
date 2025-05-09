@@ -24,9 +24,9 @@ aoristic.graph <- function(data1, marks = FALSE) {
     plots.df <- data1[, c(1, 3, 4, 5, 6, 7, 8, 2)]  # Reorder columns to put weekend at the end
     all.dots <- ifelse(marks == TRUE, T, F)  # T = Show small dots with 'all' distribution
     
-    plots.df$all <- as.numeric(plots.df$Sun) + as.numeric(plots.df$Mon) + as.numeric(plots.df$Tue)
-    plots.df$all <- plots.df$all + as.numeric(plots.df$Wed) + as.numeric(plots.df$Thu)
-    plots.df$all <- plots.df$all + as.numeric(plots.df$Fri) + as.numeric(plots.df$Sat)
+    plots.df$all <- as.numeric(plots.df$So) + as.numeric(plots.df$Mo) + as.numeric(plots.df$Di)
+    plots.df$all <- plots.df$all + as.numeric(plots.df$Mi) + as.numeric(plots.df$Do)
+    plots.df$all <- plots.df$all + as.numeric(plots.df$Fr) + as.numeric(plots.df$Sa)
     max.value.all <- max((plots.df$all), na.rm = TRUE)
     
     stack <- active <- scaled <- NULL #prevents R CMD check flagging 'no visible global function definition'
@@ -57,19 +57,19 @@ aoristic.graph <- function(data1, marks = FALSE) {
         xlab("") + ylab("Aoristic total")
     }
     
-    plots.df$active <- as.numeric(plots.df$Mon)
+    plots.df$active <- as.numeric(plots.df$Mo)
     plot.Mon <- plot_data_column("Montag", all.dots)
-    plots.df$active <- as.numeric(plots.df$Tue)
+    plots.df$active <- as.numeric(plots.df$Di)
     plot.Tue <- plot_data_column("Dienstag", all.dots)
-    plots.df$active <- as.numeric(plots.df$Wed)
+    plots.df$active <- as.numeric(plots.df$Mi)
     plot.Wed <- plot_data_column("Mittwoch", all.dots)
-    plots.df$active <- as.numeric(plots.df$Thu)
+    plots.df$active <- as.numeric(plots.df$Do)
     plot.Thu <- plot_data_column("Donnerstag", all.dots)
-    plots.df$active <- as.numeric(plots.df$Fri)
+    plots.df$active <- as.numeric(plots.df$Fr)
     plot.Fri <- plot_data_column("Freitag", all.dots)
-    plots.df$active <- as.numeric(plots.df$Sat)
+    plots.df$active <- as.numeric(plots.df$Sa)
     plot.Sat <- plot_data_column("Samstag", all.dots)
-    plots.df$active <- as.numeric(plots.df$Sun)
+    plots.df$active <- as.numeric(plots.df$So)
     plot.Sun <- plot_data_column("Sonntag", all.dots)
     plots.df$active <- as.numeric(plots.df$all)
     plot.all <- plot_data_column_all("Alle Tage", all.dots)
