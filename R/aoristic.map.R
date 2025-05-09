@@ -59,13 +59,13 @@ aoristic.map <- function(data1, AorHour = "1") {
     if (hour.num == -1) {
         hour.num <- 23
     }
-    temp.daywords <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
-    title.txt <- paste("Aoristic values for", temp.daywords[day.num], "at hour ", sep = " ")
+    temp.daywords <- c("Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag")
+    title.txt <- paste("Aoristic Wert für", temp.daywords[day.num], "zur Stunde ", sep = " ")
     if (hour.num < 10) {
-        title.txt <- paste(title.txt, "0", hour.num, "00 - 0", hour.num, "59", sep = "")
+        title.txt <- paste(title.txt, "0", hour.num, ":00 - 0", hour.num, ":59", sep = "")
     }
     if (hour.num >= 10) {
-        title.txt <- paste(title.txt, "", hour.num, "00 - ", hour.num, "59", sep = "")
+        title.txt <- paste(title.txt, "", hour.num, ":00 - ", hour.num, ":59", sep = "")
     }
     
     # Set up the plot components
@@ -77,7 +77,7 @@ aoristic.map <- function(data1, AorHour = "1") {
         scale_x_continuous(limits = c(x.min, x.max), expand = c(0, 0) ) +
         scale_y_continuous(limits = c(y.min, y.max), expand = c(0, 0) ) +
         my.color.pal + 
-        labs(title = title.txt, x = "X coordinate or Longitude", y = "Y coordinate or Latitude")
+        labs(title = title.txt, x = "X Koordinate", y = "Y Koordinate")
    
     return(map.plot)
 }
