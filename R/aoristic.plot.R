@@ -44,7 +44,7 @@ aoristic.plot <- function (data1){
       }
     }
 
-    colnames(df3) <- c('Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat')
+    colnames(df3) <- c('So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa')
     Range <- c('0000-0059',  '0000-0159',  '0200-0259',  '0300-0359',  '0400-0459',  '0500-0559',
                      '0600-0659',  '0700-0759',  '0800-0859',  '0900-0959',  '1000-1059',  '1100-1159',
                      '1200-1259',  '1300-1359',  '1400-1459',  '1500-1559',  '1600-1659',  '1700-1759',
@@ -57,7 +57,7 @@ aoristic.plot <- function (data1){
       df4[ ,j] <- as.numeric(df4[, j])
     }
     
-    days=c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+    days=c("Mo", "Di", "Mi", "Do", "Fr", "Sa", "So")
     
     df5 <- df4 %>%
       select(-c(Range)) %>%
@@ -74,12 +74,11 @@ aoristic.plot <- function (data1){
 
     p <- ggplot(data = df5, aes(x = the.hour, y = reorder(the.day, -(rat.hour)))) +
         geom_tile(aes(fill = f), color = "white") +
-        geom_text(aes(label = round(f))) +
         scale_x_continuous(breaks = seq(0,23,1)) +
-        scale_fill_gradient2(low = muted("lightblue"), mid = "gray80",
+        scale_fill_gradient2(low = scales::muted("lightblue"), mid = "gray80",
                              high = scales::muted("red"), midpoint = a.med,
                              breaks = scales::pretty_breaks(n = 6)) +
-                            labs(fill = "Frequency", x = "Hour", y = "")
+                            labs(x = "Stunde", y = "")
 
     p <- p +  theme(legend.title = element_text( size = 16),
               legend.key.height = unit(1, "cm"),
@@ -92,7 +91,7 @@ aoristic.plot <- function (data1){
               panel.background = element_rect(fill = 'white'),
               panel.border = element_blank())
       p <- p + ggtitle(" ")
-      p <- p + theme(plot.title = element_text(size = 16))
+      p <- p + theme(plot.title = element_text(size = 16), legend.position="none")
 
       print(p)
 
